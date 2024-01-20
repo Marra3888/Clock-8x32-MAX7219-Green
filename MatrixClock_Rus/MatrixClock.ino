@@ -4,7 +4,7 @@
 #include <Timezone.h>
 #include <Time.h>
 
-//#include "fonts.h"
+//для платы Wemos D1
 
 static const uint8_t RXPin = 4, TXPin = 5; //D2 - RX, D1 - TX
 static const uint32_t GPSBaud = 9600;
