@@ -22,7 +22,8 @@ byte scr[NUM_MAX*8 + 8]; // +8 for scrolled char
 void sendCmd(int addr, byte cmd, byte data)
 {
   digitalWrite(CS_PIN, LOW);
-  for (int i = NUM_MAX-1; i>=0; i--) {
+  for (int i = NUM_MAX-1; i>=0; i--) 
+  {
     shiftOut(DIN_PIN, CLK_PIN, MSBFIRST, i==addr ? cmd : 0);
     shiftOut(DIN_PIN, CLK_PIN, MSBFIRST, i==addr ? data : 0);
   }
@@ -32,14 +33,16 @@ void sendCmd(int addr, byte cmd, byte data)
 void sendCmdAll(byte cmd, byte data)
 {
   digitalWrite(CS_PIN, LOW);
-  for (int i = NUM_MAX-1; i>=0; i--) {
+  for (int i = NUM_MAX-1; i>=0; i--) 
+  {
     shiftOut(DIN_PIN, CLK_PIN, MSBFIRST, cmd);
     shiftOut(DIN_PIN, CLK_PIN, MSBFIRST, data);
   }
   digitalWrite(CS_PIN, HIGH);
 }
 
-void refresh(int addr) {
+void refresh(int addr) 
+{
   for (int i = 0; i < 8; i++)
     sendCmd(addr, i + CMD_DIGIT0, scr[addr * 8 + i]);
 }
